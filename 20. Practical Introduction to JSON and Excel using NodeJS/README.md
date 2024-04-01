@@ -22,4 +22,8 @@
 
 4.1
     - require, is used to fetch data.
-    - on
+    - make two sheet, first one contains raw data and second with processed data.
+
+4.2
+    - fs, is used to fetch data.
+    - again make two sheets as done above.
