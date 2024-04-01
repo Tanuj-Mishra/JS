@@ -12,7 +12,8 @@
 const url = 'https://www.github.com/topics';
 const request = require('request');
 const cheerio = require('cheerio');
-let topicURLs = [];
+const getReposPageHtml = require('./reposPage');
+
 
 request(url,cb);
 
@@ -24,7 +25,6 @@ function cb(error, response, body) {
     else {
         // console.log(body);
         getTopicLinks(body);
-        console.log(topicURLs);
     }
 }
 
@@ -36,8 +36,9 @@ function getTopicLinks(html) {
     for(let i = 0; i < topicArray.length; i++) {
         let attr = $(topicArray[i]).attr('href');
         attr = attr.replace('/topics','');
-        topicURLs.push(url + attr);
+        getReposPageHtml(url+attr);
         
+        break;
         // alternatively
         /* 
             let attr = $(topicArray[i]).attr('href');
