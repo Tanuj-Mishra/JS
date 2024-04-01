@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Robert-1",
+    "age": 34,
+    "isAvenger": true,
+    "friends": ["burce", "peter"],
+    "object": { "key1": "value1", "key2": "value2" }
+  },
+  {
+    "name": "Robert-2",
+    "age": 34,
+    "isAvenger": true,
+    "friends": ["burce", "peter"],
+    "object": { "key1": "value1", "key2": "value2" }
+  },
+  {
+    "name": "Robert-3",
+    "age": 34,
+    "isAvenger": true,
+    "friends": ["burce", "peter"],
+    "object": { "key1": "value1", "key2": "value2" }
+  }
+]
