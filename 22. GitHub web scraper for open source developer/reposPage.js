@@ -5,6 +5,9 @@
 
 const request = require("request");
 const cheerio = require("cheerio");
+const fs = require('fs');
+const path = require('path');
+
 const maxIssues = 8;
 
 // ! functino written inside another function?
@@ -12,24 +15,25 @@ const maxIssues = 8;
 // todo having said, that, it will work fine in case if it is placed outside parent function
 
 // url contains parent topic name
-let parentTopic;
 let childTopic;
+const outputDirectory = 'output';
 
 function getReposPageHtml(url) {
+    const parentTopic = url.substring(30);
+    createDirectory(parentTopic);
     request(url, cb);
     
-    parentTopic = url.substring(30);
     function cb(error, response, body) {
         if (error) {
             console.log(error);
         } else {
-            getReposeLink(body);
+            getReposeLink(body, parentTopic);
         }
     }
 
     // here issues are present in class '.tabnav-tab.f6.px-2.py-1', along with some othere elements
     // to filter out issues, we selected only those element in above array in which href ends with 'issues', in case of other element
-    function getReposeLink(html) {
+    function getReposeLink(html, parentDirectory) {
         const $ = cheerio.load(html);
         const elements = $(".tabnav-tab.f6.px-2.py-1");
         let count = 0;
@@ -40,13 +44,14 @@ function getReposPageHtml(url) {
             if (lastPart == "issues") {
                 let newURL = `https://www.github.com${href}`;
                 // console.log(newURL,href);
-                getIssueCotent(newURL);
-                break;
+
+                getIssueCotent(newURL, parentDirectory);
+                count++;
             }
         }
     }
 
-    function getIssueCotent(url) {
+    function getIssueCotent(url, parentDirectory) {
         request(url, function (error, response, body) {
             if (error) {
                 console.log(error);
@@ -65,10 +70,44 @@ function getReposPageHtml(url) {
                     let a = $(parentElements[i]).text();
                     data.push(a);
                 }
-                console.log(parentTopic,childTopic, data);
+                const filePath = path.join(outputDirectory,parentDirectory,childTopic+'.json');
+                createFile(filePath,data);
+                // console.log(parentTopic,childTopic, data);
             }
         });
     }
 }
 
+
+function createDirectory(dirPath) {
+    let parentDirectory = 'output';
+    dirPath = path.join(parentDirectory,dirPath);
+
+    if(fs.existsSync(parentDirectory) == false) {
+        fs.mkdirSync(parentDirectory);
+    }
+
+    if(fs.existsSync(dirPath) == false) {
+        fs.mkdirSync(dirPath);
+    }
+
+}
+
+function createFile(filePath,data) {
+
+    const buffer = JSON.stringify(data);
+    if(fs.existsSync(filePath) == false) {
+        fs.writeFileSync(filePath,buffer);
+    }
+}
+
 module.exports = getReposPageHtml;
+
+
+// ? future extension
+/*
+    todo output
+        todo - old [contains records of previous transaction]
+        todo - new [contains records of current transaction]
+
+*/

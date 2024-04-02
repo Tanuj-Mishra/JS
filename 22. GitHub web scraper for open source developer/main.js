@@ -38,9 +38,7 @@ function getTopicLinks(html) {
     for(let i = 0; i < topicArray.length; i++) {
         let attr = $(topicArray[i]).attr('href');
         attr = attr.replace('/topics','');
-        getReposPageHtml(url+attr);
-        
-        break;  // remove it
+        getReposPageHtml(url+attr);        
     }
 }
 
