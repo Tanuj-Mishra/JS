@@ -1,5 +1,5 @@
 // * [unimportant comment]
-// todo [pending work] 
+// todo [pending work]
 // ! [error]
 // ? [doubt]
 
@@ -8,21 +8,19 @@
 
 // ! add notes about cheerio and request, what they are etc.
 
+const url = "https://www.github.com/topics";
+const request = require("request");
+const cheerio = require("cheerio");
+const getReposPageHtml = require("./reposPage");
 
-const url = 'https://www.github.com/topics';
-const request = require('request');
-const cheerio = require('cheerio');
-const getReposPageHtml = require('./reposPage');
-
-
-request(url,cb);
-
+request(url, cb);
 
 function cb(error, response, body) {
-    if(error) {
+    if (error) {
         console.log(error);
-    }
-    else {
+    } else if (response.statusCode == 404) {
+        console.log("Page not found.");
+    } else {
         // console.log(body);
         getTopicLinks(body);
     }
@@ -33,12 +31,13 @@ function cb(error, response, body) {
 
 // here, topics are having class 'no-underline d-flex flex-column flex-justify-center'
 function getTopicLinks(html) {
-    const $ = cheerio.load(html);               // to get selector for 'html'
-    const topicArray = $(".no-underline.d-flex.flex-column.flex-justify-center");
-    for(let i = 0; i < topicArray.length; i++) {
-        let attr = $(topicArray[i]).attr('href');
-        attr = attr.replace('/topics','');
-        getReposPageHtml(url+attr);        
+    const $ = cheerio.load(html); // to get selector for 'html'
+    const topicArray = $(
+        ".no-underline.d-flex.flex-column.flex-justify-center"
+    );
+    for (let i = 0; i < topicArray.length; i++) {
+        let attr = $(topicArray[i]).attr("href");
+        attr = attr.replace("/topics", "");
+        getReposPageHtml(url + attr);
     }
 }
-
