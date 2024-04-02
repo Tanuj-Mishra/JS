@@ -1,0 +1,12 @@
+{
+  "name": "25.-practical-introduction-to-automation-with-node.js-and-puppeteer",
+  "version": "1.0.0",
+  "description": "There are majorly two tools/options for automation using nodejs.\r 1. selenium -> not good support.\r 2. puppeter -> google open source library.",
+  "main": "intro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
