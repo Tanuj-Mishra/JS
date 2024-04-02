@@ -43,8 +43,6 @@ function getReposPageHtml(url) {
 
             if (lastPart == "issues") {
                 let newURL = `https://www.github.com${href}`;
-                // console.log(newURL,href);
-
                 getIssueCotent(newURL, parentDirectory);
                 count++;
             }
