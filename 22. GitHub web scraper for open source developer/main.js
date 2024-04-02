@@ -30,20 +30,17 @@ function cb(error, response, body) {
 
 // ! ` vs ' vs ""
 // ! in case of `, + can't be used, and it is bit modern.
+
+// here, topics are having class 'no-underline d-flex flex-column flex-justify-center'
 function getTopicLinks(html) {
-    const $ = cheerio.load(html);
+    const $ = cheerio.load(html);               // to get selector for 'html'
     const topicArray = $(".no-underline.d-flex.flex-column.flex-justify-center");
     for(let i = 0; i < topicArray.length; i++) {
         let attr = $(topicArray[i]).attr('href');
         attr = attr.replace('/topics','');
         getReposPageHtml(url+attr);
         
-        break;
-        // alternatively
-        /* 
-            let attr = $(topicArray[i]).attr('href');
-            let url = `https://www.github.com/${attr}`;
-        */
+        break;  // remove it
     }
 }
 
