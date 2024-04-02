@@ -1,3 +1,8 @@
+// * [unimportant comment]
+// todo [pending work]
+// ! [error]
+// ? [doubt]
+
 const fs = require('fs');
 
 console.log("Before");
