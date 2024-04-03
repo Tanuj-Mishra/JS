@@ -1,0 +1,21 @@
+Almost all functions of puppeteer returns a promise.
+By default, chromium is headless, i.e it will do the work without launching it.
+browserOpenPromise, on success will return borwserContextObject
+
+
+
+-- in case of serial execution of these promises, .then can be used directly.
+-- a single catch will be enough for all chained promises.
+
+const browserOpenPromise = puppeteer.launch({headless: false});
+
+const pageArrayPromise = browserOpenPromise.then(function(browserContext) {
+    console.log('Launching browser');
+    const pageArrayPromise = browserContext.pages();
+    return pageArrayPromise;
+})
+
+pageArrayPromise.then(function(browserPages) {
+    const currentPage = browserPages[0];
+    currentPage.goto('https://www.google.com');
+})
