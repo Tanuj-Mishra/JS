@@ -13,6 +13,7 @@ const puppeteer = require('puppeteer');
 let currentPage;
 
 // ? what is below syntax of passsing parameter
+// passing object with function call 
 // const browserOpenPromise = puppeteer.launch({headless: false});
 // const a = currentPage.waitForSelector('textarea', {visible:true});
 
@@ -28,7 +29,8 @@ browserOpenPromise.then(function(browserContext) {
     console.log('Launching browser');
     const pageArrayPromise = browserContext.pages();
     return pageArrayPromise;
-}).then(function(browserPages) {
+})
+.then(function(browserPages) {
     // open url 
     currentPage = browserPages[0];
     const gotoPromise = currentPage.goto('https://www.google.com');
@@ -49,7 +51,8 @@ browserOpenPromise.then(function(browserContext) {
 }).then(function() {
     const linkPressPromise = currentPage.click('h3.LC20lb.MBeuO.DKV0Md');
     return linkPressPromise;
-}).catch(function(error) {
+})
+.catch(function(error) {
     console.log(error);
 })
 
