@@ -1,0 +1,2 @@
+Imperative - focuses on how to do.
+Declarative - focuses on what to do.

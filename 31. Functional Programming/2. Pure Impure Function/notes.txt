@@ -1,0 +1,12 @@
+Impure Function
+    - Function whose result depends upon external factors.
+        i.e, function returns different returns for same set of argument.
+
+Pure Function
+    - Just reverse of impure function.
+    - Function will return same result for same set of arguments.
+
+Side effects
+    - If a function is changing the environment(state must not be mutated), then it is k/a as sideeffects.
+    - Although, it is advisible to use pure function without sideeffects, but it's practically almost impossible to do so.
+        So try to code, having very less number of side effects.

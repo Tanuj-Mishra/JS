@@ -1,0 +1,4 @@
+Different types of programmng paradigm
+    1. Procedural paradigm - Imperative way.
+    2. OOPS -> classes and objects.
+    3. Procedural -> Declarative + Pure(without sideeffects as much as possible) + Immutable.

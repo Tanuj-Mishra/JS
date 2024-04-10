@@ -1,0 +1,8 @@
+Mutable
+    - Instead of creating a new instance, reference is passed.
+    - So when any of referencee or referenced object is altered, it's effect will be shown to other.
+
+Immutable
+    - Here, a new instance is created.
+    - Different methods to achieve it 
+        - Shallow and Deep copy, Object.Assign, Spread Opertor.
