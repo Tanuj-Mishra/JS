@@ -1,0 +1,5 @@
+we can remember about these using, task which they perform, then as per requirement map the problem to the task which is bounded to these.
+
+map     -> find square of each element.
+filter  -> find even numbers.
+reduce  -> find sum of all elements.
