@@ -9,7 +9,7 @@
 // get sum of all numbers.
 
 
-function my_reduce_polyfill(arr,intialValue) {
+function my_reduce_polyfills(arr,intialValue) {
     let result = intialValue;
 
     for(let i = 0; i < arr.length; i++) {
@@ -20,4 +20,4 @@ function my_reduce_polyfill(arr,intialValue) {
 }
 
 
-module.exports = {my_reduce_polyfill};
+module.exports = {my_reduce_polyfills};

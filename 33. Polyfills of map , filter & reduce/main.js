@@ -5,7 +5,7 @@
 
 const my_map = require('./map_polyfills');
 const my_filter = require('./filter_polyfills');
-const my_reduce = require('./reduce_polyfills');
+const my_reduce = require('./reduce_polyfills.js');
 
 const input_array = [1,2,3,4,5];
 
@@ -18,5 +18,5 @@ const even_array = my_filter.my_filter(input_array,my_filter.isEven);
 console.log(even_array);
 
 
-const sum_of_array = my_reduce.my_reduce_polyfill(input_array,0);
+const sum_of_array = my_reduce.reduce(input_array,0);
 console.log(sum_of_array);
