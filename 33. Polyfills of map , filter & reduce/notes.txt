@@ -1,0 +1,6 @@
+actual functions are implemented as 
+
+array.map(callback) etc.
+    - this is based on this keywor, about which we dont much about, at present stage, so better 
+        - we have used normal implementation here.
+
