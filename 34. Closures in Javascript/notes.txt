@@ -1,0 +1,12 @@
+closure
+
+1_scope
+    - since result was declared inside function, therefore after it's execution it's no more available.
+
+2_lexical_scope
+    - child function has access to parent function's scope, therefore 'a' is accessible from child function.
+
+3_closure
+    - even after execution of parent function, it's removed from stack, child function has accessed to parent's variables.
+    - this is k/a closure.
+    - a function is always bundled with it's lexical scope.
